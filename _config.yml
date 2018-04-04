@@ -1,9 +1,9 @@
 # Site settings
-title:              Portfolio Template
-email:              your-email@domain.com
-description:        "Portfolio template for students in the MSR program at Northwestern University"
+title:              Weilin Ma's Portfolio Site
+email:              weilinma2018@u.northwestern.edu
+description:        "Portfolio site for Weilin Ma in the MSR program at Northwestern University"
 url:                "http://localhost:4000"
-baseurl:            /msr-student-template
+baseurl:            /WM_portfolio
 theme:              jekyll-theme-slate
 
 # File structure settings
