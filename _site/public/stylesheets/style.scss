@@ -72,106 +72,40 @@ html {
 		/* Portfolio page */
 		main#portfolio {
 
-			div#portfolio-gallery {
+			ul#portfolio-gallery {
 				margin: 0 auto;
 				width: 100%;
 				overflow: auto;
-				height: auto;
 
-				div.container {
-					width: calc((100% - 60px - 40px) / 4);
-					display: inline-block;
+				li {
+					float: left;
 					margin-bottom: 20px;
-					border: 2px solid #bbb;
+					width: calc((100% - 68px) / 4); // 20px margin, 6px of border
+					list-style: none;
 					text-align: center;
-					position: relative;
-
-					div.aspect-ratio-keeper {
-						padding-bottom: 100%;
-					}
-
-					div.content {
-						position: absolute;
-						top: 0;  bottom: 0;  left: 0;  right: 0;
-					}
+					border: 1px solid #bbb;
+					border-radius: 3px;
 
 					a {
 						color: inherit;
 						text-decoration: none;
-					}
 
-					span.link-spanner {
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						top: 0;
-						left: 0;
-						z-index: 1;
-					}
-
-					div.image-container {
-						position: relative;
-						height: 85%;
-						overflow: hidden;
-						text-align: center;
-						-webkit-transform-style: preserve-3d;
-						-moz-transform-style: preserve-3d;
-						transform-style: preserve-3d;
-
-						div.image-vertical-align-box {
-							position: relative;
-							top: 50%;
-							-webkit-transform: translateY(-50%);
-							-ms-transform: translateY(-50%);
-							transform: translateY(-50%);
-							
-							img.inner {
-								width: 100%;
-								margin: auto;
-							}
+						img {
+							width: 100%;
+							border-radius: 3px 3px 0 0;
 						}
-					}
-
-					div.inner-text {
-						padding-top: 8%;
-						padding-bottom: 4%;
-						z-index: 100;
-						background: white;
-						overflow: hidden;
-						position: absolute;
-						bottom: 0px;
-						width: 100%;
-						max-height: 30%;
-						min-height: 10%;
-
 						h2 {
+							display: block;
+							padding: 15px;
 							font-size: 16px;
-							margin: 0;
-							padding: 0;
-							margin-left: 1%;
-							margin-right: 1%;
 						}
 					}
 				}
-
-				/* 2xN grid: */
-				@media screen and (max-width : 800px) {
-					div.container:not(:nth-child(2n)) {
-						margin-right: 20px;
-					}
-					div.container {
-						width: calc((100% - 40px - 40px) / 2);
-					}
-				}
-
-				/* 4xN grid: */
-				div.container:not(:nth-child(4n)) {
+				li:not(:nth-child(4n)) {
 					margin-right: 20px;
 				}
 			}
 		}
-
-		
 		/* About page */
 		main#about {
 
@@ -264,17 +198,7 @@ html {
 					width: calc(100% / 3);
 					text-align: center;
 				}
-				@media screen and (max-width : 1000px) {
-					li {
-						width: 100%;
-						float: none;
-						text-align: left;
-						
-					}
-				}
 			}
-
-			
 		}
 	}
 }

@@ -4,7 +4,7 @@ email:              weilinma2018@u.northwestern.edu
 description:        "Portfolio site for Weilin Ma in the MSR program at Northwestern University"
 url:                "http://localhost:4000"
 baseurl:            /WM_portfolio
-theme:              jekyll-theme-slate
+## theme:              jekyll-theme-slate
 
 # File structure settings
 image_path:         /public/images
