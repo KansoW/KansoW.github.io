@@ -28,11 +28,66 @@
 
       <main class="project">
 	<section id="contact-content">
-		<img id="project-image" src="https://github.com/KansoW/KansoW.github.io/blob/master/public/images/former_front.jpg">
+		<img id="project-image" src="https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg">
 		<h1 id="project-title">Two-wheel Self-balancing Robot</h1>
 		<h2 id="project-date">2018-03-26 00:00:00 -0500</h2>
 
 		<h2 id="project-description">Project description</h2>
+
+<h1 id="two-wheel-self_balance-robot-with-arduino"><strong>Two-wheel Self_balance Robot with Arduino</strong></h1>
+<h3 id="general-idea"><strong>General Idea</strong></h3>
+<h5 id="this-is-a-project-that-combines-classical-ideas-from-other-projects">This is a project that combines classical ideas from other projects.</h5>
+<ol>
+  <li>The inverse pendulum problem that is often seen in the dynamics and control peojects or courses.</li>
+  <li>The Arduino car driving project that is often used as a startup proejcts for learning Arduino.</li>
+  <li>The IMU (<em>Inertial Measurement Unit</em>) that is widely used for balancing projects.
+    <h5 id="this-project-itself-is-fairly-straight-forward-there-are-many-research-papers-and-technical-blog-found-online-that-tackled-this-problem-successfully-i-am-humble-and-glad-that-i-could-get-some-help-from-these-resources">This project itself is fairly straight forward. There are many research papers and technical blog found online that tackled this problem successfully. I am humble and glad that I could get some help from these resources.</h5>
+  </li>
+</ol>
+
+<h3 id="materials">Materials</h3>
+<h4 id="electrical">Electrical</h4>
+<ol>
+  <li>Arduino UNO V3</li>
+  <li>DF Robot L298N Motor Driver</li>
+  <li>Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder</li>
+  <li>MPU6050 6-axis IMU (accelerometer + gyro)</li>
+  <li>12V 1600 mAh NiMh Battery</li>
+  <li>Mini breadborad</li>
+  <li>Jumper wires</li>
+  <li>Power cable toggle switch
+    <h4 id="mechanical">Mechanical</h4>
+  </li>
+  <li>Pololu Acrylic Chassis Borads</li>
+  <li>DF Robot Metal Alluminum Standoffs</li>
+  <li>Pololu 80mm dia Wheels</li>
+  <li>Pololu 25mm Metal Gear Brackets</li>
+  <li>Polou 4mm Motor Shaft Adapters</li>
+  <li>200g Metal Weight
+    <h3 id="balancing-control-theory">Balancing Control Theory</h3>
+    <h5 id="pid">PID</h5>
+    <h5 id="lqr">LQR</h5>
+  </li>
+</ol>
+
+<h3 id="progress">Progress</h3>
+<h6 id="as-of-right-now-i-got-the-robot-balancing-with-simple-pid-control-here-are-some-videos-showing-the-results">As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:</h6>
+<h6><img src="https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053201.mp4" alt="Simple PID_1" /></h6>
+<h6 id="-1"><img src="https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053236.mp4" alt="Simple PID_2" /></h6>
+<h6 id="i-will-update-pictures-later">(I will update pictures later…)</h6>
+
+<h3 id="refrence-and-sources">Refrence and Sources</h3>
+<h5 id="1-suhardi--et-al-two-wheeled-balancing-robot-controller-designed-using-pid-faculty-of-electrical-and-electronic-engineering-universiti-tun-hussein-onn-malaysia-jan-2015-pp-139">1. SUHARDI , et al. “<a href="https://pdfs.semanticscholar.org/5a5b/3b44c6456ae231162ce013a8e493dc1bc6db.pdf">TWO-WHEELED BALANCING ROBOT CONTROLLER DESIGNED USING PID.</a>” Faculty of Electrical and Electronic Engineering Universiti Tun Hussein Onn Malaysia, Jan. 2015, pp. 1–39.</h5>
+<h5 id="2-stanford-university-ee363-linear-quadratic-regulator-discrete-time-finite-horizon-linear-quadratic-regulator-discrete-time-finite-horizon-jan-2009-pp-132">2. Stanford University EE363. “<a href="https://stanford.edu/class/ee363/lectures/dlqr.pdf">Linear Quadratic Regulator: Discrete-Time Finite Horizon.</a>” Linear Quadratic Regulator: Discrete-Time Finite Horizon, Jan. 2009, pp. 1–32.()</h5>
+<h5 id="3-cds-110b-lecture-2--lqr-control-california-institute-of-technology-control-and-dynamical-systems-11-jan-2006-pp-114">3. CDS 110b. “<a href="https://www.cds.caltech.edu/~murray/courses/cds110/wi06/lqr.pdf">Lecture 2 – LQR Control</a>.” CALIFORNIA INSTITUTE OF TECHNOLOGY Control and Dynamical Systems, 11 Jan. 2006, pp. 1–14.</h5>
+<h5 id="4-df-robot-md13-2a-dual-motor-controller-sku-dri0002">4. <a href="https://www.dfrobot.com/wiki/index.php/MD1.3_2A_Dual_Motor_Controller_SKU_DRI0002">DF Robot MD1.3 2A Dual Motor Controller SKU DRI0002</a></h5>
+<h5 id="5-pololu-2041-metal-gearmotor-25dx50l-mm-lp-12v-with-48-cpr-encoder">5. <a href="https://www.pololu.com/product/3263">Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder</a></h5>
+<h5 id="6-instructables-arduino-self-balancing-robot">6. <a href="https://www.instructables.com/id/Arduino-Self-Balancing-Robot-1/">Instructables ARDUINO SELF-BALANCING ROBOT</a></h5>
+<h5 id="7-mpu-6050-auto-calibration">7. <a href="http://42bots.com/tutorials/arduino-script-for-mpu-6050-auto-calibration/">MPU-6050 auto-calibration</a></h5>
+<h5 id="8-hc-06-bluetooth-module-datasheet-and-configuration-with-arduino">8. [HC-06 Bluetooth module datasheet and configuration with Arduino</h5>
+<p>](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)</p>
+<h5 id="9-wolfram-blog-stabilized-inverted-pendulum">9. <a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/">WOLFRAM BLOG Stabilized Inverted Pendulum</a></h5>
+<h5 id="10-stages-of-development-of-the-robot-balancer">10. <a href="http://spin7ion.ru/ru/blog/balancerBuildSteps">Stages of development of the robot-balancer</a></h5>
 
 
 	</section>
