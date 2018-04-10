@@ -48,32 +48,61 @@
 <h3 id="materials">Materials</h3>
 <h4 id="electrical">Electrical</h4>
 <ol>
-  <li>Arduino UNO V3</li>
-  <li>DF Robot L298N Motor Driver</li>
-  <li>Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder</li>
-  <li>MPU6050 6-axis IMU (accelerometer + gyro)</li>
+  <li>Arduino UNO V3 
+<img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" alt="1" /></li>
+  <li>DF Robot L298N Motor Driver
+<img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" alt="2" /></li>
+  <li>Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder
+<img src="https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c" alt="3" /></li>
+  <li>MPU6050 6-axis IMU (accelerometer + gyro)
+<img src="https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg" alt="4" /></li>
   <li>12V 1600 mAh NiMh Battery</li>
   <li>Mini breadborad</li>
   <li>Jumper wires</li>
   <li>Power cable toggle switch
     <h4 id="mechanical">Mechanical</h4>
   </li>
-  <li>Pololu Acrylic Chassis Borads</li>
-  <li>DF Robot Metal Alluminum Standoffs</li>
-  <li>Pololu 80mm dia Wheels</li>
+  <li>Pololu Acrylic Chassis Borads
+<img src="https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27" alt="1" /></li>
+  <li>DF Robot Metal Alluminum Standoffs
+<img src="http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg" alt="2" /></li>
+  <li>Pololu 80mm dia Wheels
+<img src="https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0" alt="3" /></li>
   <li>Pololu 25mm Metal Gear Brackets</li>
   <li>Polou 4mm Motor Shaft Adapters</li>
-  <li>200g Metal Weight
-    <h3 id="balancing-control-theory">Balancing Control Theory</h3>
-    <h5 id="pid">PID</h5>
-    <h5 id="lqr">LQR</h5>
-  </li>
 </ol>
+
+<h3 id="balancing-control-theory">Balancing Control Theory</h3>
+<h4 id="pid">PID:</h4>
+<h5 id="pid-control-is-the-most-common-and-eaisest-method-to-control-the-motion-of-the-inverse-penculum-or-the-self-balance-questions">PID control is the most common and eaisest method to control the motion of the <strong><em>Inverse Penculum</em></strong> or the <strong><em>Self-balance</em></strong> questions.</h5>
+<h5 id="i-used-the-leaing-angle-as-the-controllable-variable-and-the-linear-pushing-or-pulling-force-as-the-input-the-imu-will-sense-gyro-reading-in-the-x-direction-and-acceleromter-reading-in-the-y-and-z-direction-of-which-the-code-snip-is-shown-below">I used the <strong>leaing angle</strong> as the controllable variable and <strong>the linear pushing or pulling force</strong> as the input. The IMU will sense gyro reading in the <strong>x direction</strong> and acceleromter reading in the <strong>y and z direction</strong>, of which the code snip is shown below:</h5>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// read acceleration and gyroscope values</span>
+  <span class="n">accY</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationY</span><span class="p">();</span>
+  <span class="n">accZ</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationZ</span><span class="p">();</span>  
+  <span class="n">gyroX</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getRotationX</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// calculate the angle of inclination</span>
+  <span class="n">accAngle</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">accY</span><span class="p">,</span> <span class="n">accZ</span><span class="p">)</span><span class="o">*</span><span class="n">RAD_TO_DEG</span><span class="p">;</span>
+  <span class="n">gyroRate</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">gyroX</span><span class="p">,</span> <span class="o">-</span><span class="mi">32768</span><span class="p">,</span> <span class="mi">32767</span><span class="p">,</span> <span class="o">-</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
+  <span class="n">gyroAngle</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">gyroRate</span><span class="o">*</span><span class="n">incTime</span><span class="p">;</span>  
+  <span class="c1">// with complementary filter filter</span>
+  <span class="n">currAngle</span> <span class="o">=</span> <span class="mf">0.999</span><span class="o">*</span><span class="p">(</span><span class="n">prevAngle</span> <span class="o">+</span> <span class="n">gyroAngle</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.001</span><span class="o">*</span><span class="p">(</span><span class="n">accAngle</span><span class="p">);</span>
+  <span class="c1">// claculate angle error </span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">currAngle</span> <span class="o">-</span> <span class="n">targetAngle</span><span class="p">;</span>
+  <span class="c1">//errSum += err;  </span>
+  <span class="c1">//errSum = constrain(errSum, -600, 600);</span>
+  <span class="c1">// calculate PWM output with PID </span>
+  <span class="c1">//motorPWM = Kp*err + Ki*errSum*incTime + Kd*(currAngle-prevAngle)/incTime;</span>
+</code></pre></div></div>
+
+<h4 id="lqr">LQR</h4>
 
 <h3 id="progress">Progress</h3>
 <h6 id="as-of-right-now-i-got-the-robot-balancing-with-simple-pid-control-here-are-some-videos-showing-the-results">As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:</h6>
-<h6><img src="https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053201.mp4" alt="Simple PID_1" /></h6>
-<h6 id="-1"><img src="https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053236.mp4" alt="Simple PID_2" /></h6>
+<h5 id="click-the-images-below-to-be-directed-to-the-videos"><strong>Click the images below to be directed to the videos</strong></h5>
+<h6><a href="https://youtu.be/JYqBO8-WjIE"><img src="https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg" alt="Simple PID_1" /></a></h6>
+<h6 id="-1"><img src="https://youtu.be/JYqBO8-WjIE" alt="Simple PID_2" /></h6>
 <h6 id="i-will-update-pictures-later">(I will update pictures later…)</h6>
 
 <h3 id="refrence-and-sources">Refrence and Sources</h3>
@@ -88,6 +117,7 @@
 <p>](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)</p>
 <h5 id="9-wolfram-blog-stabilized-inverted-pendulum">9. <a href="http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/">WOLFRAM BLOG Stabilized Inverted Pendulum</a></h5>
 <h5 id="10-stages-of-development-of-the-robot-balancer">10. <a href="http://spin7ion.ru/ru/blog/balancerBuildSteps">Stages of development of the robot-balancer</a></h5>
+
 
 
 	</section>

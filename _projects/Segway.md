@@ -17,29 +17,61 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 
 ### Materials 
 #### Electrical
-1. Arduino UNO V3
+1. Arduino UNO V3 
+   ![1](https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg)
 2. DF Robot L298N Motor Driver
+   ![2](https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg)
 3. Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder
+   ![3](https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c)
 4. MPU6050 6-axis IMU (accelerometer + gyro)
+   ![4](https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg)
 5. 12V 1600 mAh NiMh Battery
 6. Mini breadborad
 7. Jumper wires
 8. Power cable toggle switch
 #### Mechanical
 1. Pololu Acrylic Chassis Borads
+   ![1](https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27)
 2. DF Robot Metal Alluminum Standoffs
+   ![2](http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg)
 3. Pololu 80mm dia Wheels
+   ![3](https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0)
 4. Pololu 25mm Metal Gear Brackets
 5. Polou 4mm Motor Shaft Adapters
-4. 200g Metal Weight
+
 ### Balancing Control Theory
-##### PID
-##### LQR
+#### PID:
+##### PID control is the most common and eaisest method to control the motion of the __*Inverse Penculum*__ or the __*Self-balance*__ questions.
+##### I used the **leaing angle** as the controllable variable and **the linear pushing or pulling force** as the input. The IMU will sense gyro reading in the **x direction** and acceleromter reading in the **y and z direction**, of which the code snip is shown below:
+```cpp
+  // read acceleration and gyroscope values
+  accY = mpu.getAccelerationY();
+  accZ = mpu.getAccelerationZ();  
+  gyroX = mpu.getRotationX();
+```
+
+```cpp
+  // calculate the angle of inclination
+  accAngle = atan2(accY, accZ)*RAD_TO_DEG;
+  gyroRate = map(gyroX, -32768, 32767, -250, 250);
+  gyroAngle = (float)gyroRate*incTime;  
+  // with complementary filter filter
+  currAngle = 0.999*(prevAngle + gyroAngle) + 0.001*(accAngle);
+  // claculate angle error 
+  err = currAngle - targetAngle;
+  //errSum += err;  
+  //errSum = constrain(errSum, -600, 600);
+  // calculate PWM output with PID 
+  //motorPWM = Kp*err + Ki*errSum*incTime + Kd*(currAngle-prevAngle)/incTime;
+```
+
+#### LQR
 
 ### Progress
 ###### As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:
-###### ![Simple PID_1](https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053201.mp4)
-###### ![Simple PID_2](https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053236.mp4)
+##### __Click the images below to be directed to the videos__
+###### [![Simple PID_1](https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg)](https://youtu.be/JYqBO8-WjIE)
+###### ![Simple PID_2](https://youtu.be/JYqBO8-WjIE)
 ###### (I will update pictures later...)
 
 
@@ -56,3 +88,4 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 ](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)
 ##### 9. [WOLFRAM BLOG Stabilized Inverted Pendulum](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)
 ##### 10. [Stages of development of the robot-balancer](http://spin7ion.ru/ru/blog/balancerBuildSteps)
+
