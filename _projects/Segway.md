@@ -17,25 +17,25 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 
 ### Materials 
 #### Electrical
-1. Arduino UNO V3 
-   ![1](https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg)
-2. DF Robot L298N Motor Driver
-   ![2](https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg)
+##### 1. Arduino UNO V3 
+##### <img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" width="200" height="200" />
+##### 2. DF Robot L298N Motor Driver
+##### <img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" width="200" height="200" />
 3. Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder
-   ![3](https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c)
+   # ![3](https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c)
 4. MPU6050 6-axis IMU (accelerometer + gyro)
-   ![4](https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg)
+   # ![4](https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg)
 5. 12V 1600 mAh NiMh Battery
 6. Mini breadborad
 7. Jumper wires
 8. Power cable toggle switch
 #### Mechanical
 1. Pololu Acrylic Chassis Borads
-   ![1](https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27)
+   # ![1](https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27)
 2. DF Robot Metal Alluminum Standoffs
-   ![2](http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg)
+   # ![2](http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg)
 3. Pololu 80mm dia Wheels
-   ![3](https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0)
+   # ![3](https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0)
 4. Pololu 25mm Metal Gear Brackets
 5. Polou 4mm Motor Shaft Adapters
 
@@ -49,7 +49,7 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
   accZ = mpu.getAccelerationZ();  
   gyroX = mpu.getRotationX();
 ```
-
+##### Below is the leaning angle calculatoin and PID algorithm:
 ```cpp
   // calculate the angle of inclination
   accAngle = atan2(accY, accZ)*RAD_TO_DEG;
@@ -88,4 +88,3 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 ](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)
 ##### 9. [WOLFRAM BLOG Stabilized Inverted Pendulum](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)
 ##### 10. [Stages of development of the robot-balancer](http://spin7ion.ru/ru/blog/balancerBuildSteps)
-
