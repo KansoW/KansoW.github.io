@@ -17,14 +17,14 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 
 ### Materials 
 #### Electrical
-##### 1. Arduino UNO V3 
-##### <img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" width="200" height="200" />
-##### 2. DF Robot L298N Motor Driver
-##### <img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" width="200" height="200" />
+1. Arduino UNO V3 
+##### <img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" width="400" height="350" />
+2. DF Robot L298N Motor Driver
+##### <img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" width="400" height="350" />
 3. Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder
-   # ![3](https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c)
+##### <img src="https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c" width="400" height="350" />
 4. MPU6050 6-axis IMU (accelerometer + gyro)
-   # ![4](https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg)
+##### <img src="https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg" width="400" height="350" />
 5. 12V 1600 mAh NiMh Battery
 6. Mini breadborad
 7. Jumper wires
@@ -88,3 +88,5 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 ](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)
 ##### 9. [WOLFRAM BLOG Stabilized Inverted Pendulum](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)
 ##### 10. [Stages of development of the robot-balancer](http://spin7ion.ru/ru/blog/balancerBuildSteps)
+
+
