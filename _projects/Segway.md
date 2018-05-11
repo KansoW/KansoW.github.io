@@ -70,7 +70,7 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 ### Progress
 ###### As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:
 ##### __Click the images below to be directed to the videos__
-###### [![Simple PID_1](https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg)](https://youtu.be/JYqBO8-WjIE)
+###### [First video](https://youtu.be/JYqBO8-WjIE)
 ###### ![Simple PID_2](https://youtu.be/JYqBO8-WjIE)
 ###### (I will update pictures later...)
 
