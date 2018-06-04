@@ -8,7 +8,7 @@ image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/i
 ## Project description
 
 # **Two-wheel Self_balance Robot with Arduino** 
-# 
+#  .
 ______
 ### **General Idea**
 ##### This is a project that combines classical ideas from other projects. 
@@ -17,7 +17,7 @@ ______
  3. The IMU (_Inertial Measurement Unit_) and I2C communication that is widely used for balancing projects.
 ##### This project does a simple mission: **Balancing by itself on two wheels**. 
 ##### The idea is that this robot will use **IMU sensor** to detect leaning angel and **hall-effect sensor** to detect linear movement. Then the data will be used by the **microcontroller (Arduino Uno)** to put in a **LQR (linear-quadratic regulation)** controller to find the proper motor PWM. Then the motor driver unit will apply PWM to drive the motors accordingly. The whole sensing and responding system will run at **400 Hz**. 
-###
+### .
 _____
 ### **Materials** 
 #### **Electrical**
@@ -33,7 +33,7 @@ _____
 ##### 6. Mini breadborad
 ##### 7. Jumper wires
 ##### 8. Power cable toggle switch
-#####
+##### .
 ______
 #### **Mechanical**
 ##### 1. Pololu Acrylic Chassis Borads
@@ -44,7 +44,7 @@ ______
 #####   <img src="https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0" width="400" height="350" />
 ##### 4. Pololu 25mm Metal Gear Brackets
 ##### 5. Polou 4mm Motor Shaft Adapters
-#####
+##### .
 ______
 ### Balancing Control Theory
 #### PID:
@@ -71,7 +71,7 @@ ______
   // calculate PWM output with PID 
   motorPWM = Kp*err + Ki*errSum*incTime + Kd*(currAngle-prevAngle)/incTime;
 ```
-#####
+##### .
 ____
 #### LQR
 
@@ -93,7 +93,7 @@ ____
 #define Kth -2051
 #define Kdth -166
 ```
-#####
+##### .
 ______
 #### Turning
 ###### Later on I added turning algorithms so I can make it turn left or right with bluetooth control:
@@ -139,7 +139,7 @@ ______
   prevy = y;
   
 ```
-#####
+##### .
 _______
 #### Bluetooth Connection and Control
 ###### I put on a bluetooth module on the Arduino in order to communicate with my laptop and preferrably, my cell-phone. The module I used is a **Bluetooth HC-05** which I bought from Amazon.com:
@@ -150,8 +150,8 @@ _______
 ###### [Simple PID_1](https://youtu.be/JYqBO8-WjIE)
 ###### [Simple PID_2](https://youtu.be/JYqBO8-WjIE)
 
-###
-###
+### .
+### .
 _____
 ### Refrence and Sources
 ##### 1. SUHARDI , et al. “[TWO-WHEELED BALANCING ROBOT CONTROLLER DESIGNED USING PID.](https://pdfs.semanticscholar.org/5a5b/3b44c6456ae231162ce013a8e493dc1bc6db.pdf)” Faculty of Electrical and Electronic Engineering Universiti Tun Hussein Onn Malaysia, Jan. 2015, pp. 1–39.
@@ -165,6 +165,8 @@ _____
 ](http://42bots.com/tutorials/hc-06-bluetooth-module-datasheet-and-configuration-with-arduino/)
 ##### 9. [WOLFRAM BLOG Stabilized Inverted Pendulum](http://blog.wolfram.com/2011/01/19/stabilized-inverted-pendulum/)
 ##### 10. [Stages of development of the robot-balancer](http://spin7ion.ru/ru/blog/balancerBuildSteps)
+
+
 
 
 
