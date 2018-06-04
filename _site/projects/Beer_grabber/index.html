@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+
+	<title>Weilin Ma's Portfolio Site</title>
+	<link rel="icon" type="image/png" href="/KansoW.github.io/public/images/msr-student-template-favicon.png">
+
+	<link rel="stylesheet" href="/KansoW.github.io/public/stylesheets/style.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <header>
+    <nav>
+    	<a href="/KansoW.github.io/"><h1>Weilin Ma's Portfolio</h1></a>
+    	<ul>
+    		<li><a href="/KansoW.github.io/">Portfolio</a></li>
+    		<li><a href="/KansoW.github.io/about/">About</a></li>
+    		<li><a href="/KansoW.github.io/contact/">Contact</a></li>
+    	</ul>
+    </nav>
+</header>
+
+      <main class="project">
+	<section id="contact-content">
+		<img id="project-image" src="https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg">
+		<h1 id="project-title">ROS (Robot Operating System) Course Project</h1>
+		<h2 id="project-date">2017-12-09 00:00:00 -0600</h2>
+
+		<h2 id="project-description">Project description</h2>
+
+<h2 id="sawyer-beer-coke-bottle-grabber">Sawyer Beer (Coke) Bottle Grabber</h2>
+<p>=============================================</p>
+<h4 id="me-495-final-project-fall-2017-northwestern-university-evanston-il">ME 495 Final Project, Fall 2017, Northwestern University, Evanston, IL</h4>
+<h4 id="station-sawyer-robot-rethink-robotics-inc">Station: Sawyer Robot, Rethink Robotics Inc.</h4>
+<h4 id="goup-members--mengjiao-hong-ben-don-weilin-ma--huaiyu-wang-felix-wang">Goup members:  <a href="https://github.com/MuMu1018">Mengjiao Hong</a>, <a href="https://github.com/benbdon">Ben Don</a>, <a href="https://github.com/KansoW">Weilin Ma</a> , <a href="https://github.com/whycn">Huaiyu Wang</a>, <a href="https://github.com/yanweiw">Felix Wang</a></h4>
+<hr />
+
+<p><a href="https://www.youtube.com/watch?v=asuPnFKfNog"><img src="https://img.youtube.com/vi/asuPnFKfNog/0.jpg" alt="sawyer_coke" /></a></p>
+
+<p>Another link: https://youtu.be/LEMvSSeDHZU</p>
+
+<h4 id="table-of-contents">Table of Contents</h4>
+
+<p><a href="#Instructions">Instructions for running the files</a></p>
+
+<p><a href="#Project\Overview">Project Overview</a></p>
+
+<p><a href="#Requirements">Requirements</a></p>
+
+<p><a href="#nodes">Important nodes</a></p>
+
+<p><a href="#topics">Important topics</a></p>
+
+<p><a href="#services">Important services</a></p>
+
+<p><a href="#Vision">1. Detecting the location of the bottle </a></p>
+
+<p><a href="#Movement">2. Moving and gripping</a></p>
+
+<hr />
+<h4 id="instructions-for-running-files-">Instructions for running files <a name="Instructions"></a></h4>
+
+<p>To run the files, the workspace must be connected to Sawyer and properly sourced. Then use the following command: <code class="highlighter-rouge">roslaunch sawyer_beer main.launch</code></p>
+
+<h4 id="project-overview--">Project Overview  <a name="Project\Overview"></a></h4>
+<p>The main goal of this project was to use Rethink Robotics’ Sawyer robot to autonomously pick a bottleoff of a work surface and offer it to a user. This was the final project for ME495: Embedded Systems in Robotics at Northwestern University. The task was split into 3 major parts:</p>
+<ul>
+  <li>Detecting the location of the bottle</li>
+  <li>Moving the robot’s gripper to the bottle, gripping it, moving it to the release position.</li>
+</ul>
+
+<h4 id="requirements-">Requirements <a name="Requirements"></a></h4>
+
+<ul>
+  <li>Intera SDK - follow the <a href="http://sdk.rethinkrobotics.com/intera/Workstation_Setup">Workstation Setup</a> Instructions. This site includes all the specific dependencies such as rosdep, control-msgs, cv-bridge, etc.</li>
+  <li>MoveIt! - follow the <a href="http://moveit.ros.org/install/">steps</a> for install. Note the specific installation directions are for indigo, so make sure to include your OS version instead such as kinetic.</li>
+</ul>
+
+<h4 id="important-nodes-">Important nodes <a name="nodes"></a></h4>
+<ul>
+  <li><code class="highlighter-rouge">get_target.py</code> provides AR detection</li>
+  <li><code class="highlighter-rouge">move_to_target.py</code> moves the end effector and opens/closes the gripper</li>
+</ul>
+
+<h4 id="important-topics-">Important topics <a name="topics"></a></h4>
+<ul>
+  <li><code class="highlighter-rouge">ar_pose_marker</code> this topic is subscribed to get the AR pose information</li>
+</ul>
+
+<h4 id="important-services-">Important services <a name="services"></a></h4>
+<ul>
+  <li><code class="highlighter-rouge">ExternalTools/right/Position/KinematicsNode/IKService</code> this service provides IK solutions</li>
+  <li><code class="highlighter-rouge">check_state_validity</code> this service verifies that the robot position doesn’t collide with objects in the scene</li>
+  <li><code class="highlighter-rouge">get_target</code> this service provides us the AR tag pose information from camera</li>
+</ul>
+
+<h4 id="1-detecting-the-location-of-the-bottle-">1. Detecting the location of the bottle <a name="Vision"></a></h4>
+<p>In this state, a service is written that provides the pose information of the AR tag.</p>
+
+<h4 id="2-moving-and-gripping-">2. Moving and gripping <a name="Movement"></a></h4>
+<p>In this state, the gripper initializes to open. The collision objects are added to the scene. Sawyer’s gripper moves to a home position that ensures the AR tag is visible by the wrist camera. Next, the node gets the AR tag pose information and calibrates it to a desired end effector position (ie where the bottle is located relative to the tag). The joint angles of the end effector in the desired orientation are computed and validated to ensure no collisions. Then the motion plan is calculated using collision information. Assuming no errors, the bottle moves to target, grips the bottle, and moves it to release position where the grip loosens enough to let the user pull the bottle out.</p>
+
+
+	</section>
+
+</main>
+
+      <footer>
+    <ul>
+    	<li>weilinma2018@u.northwestern.edu</li>
+    	<li>1510 Dempster St., Evanston, IL, 60202</li>
+    	<li>(814)777-5009</li>
+    </ul>
+</footer>
+
+
+
+    </div>
+
+  </body>
+</html>
