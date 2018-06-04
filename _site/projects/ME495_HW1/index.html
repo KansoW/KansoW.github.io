@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+
+	<title>Weilin Ma's Portfolio Site</title>
+	<link rel="icon" type="image/png" href="/KansoW.github.io/public/images/msr-student-template-favicon.png">
+
+	<link rel="stylesheet" href="/KansoW.github.io/public/stylesheets/style.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <header>
+    <nav>
+    	<a href="/KansoW.github.io/"><h1>Weilin Ma's Portfolio</h1></a>
+    	<ul>
+    		<li><a href="/KansoW.github.io/">Portfolio</a></li>
+    		<li><a href="/KansoW.github.io/about/">About</a></li>
+    		<li><a href="/KansoW.github.io/contact/">Contact</a></li>
+    	</ul>
+    </nav>
+</header>
+
+      <main class="project">
+	<section id="contact-content">
+		<img id="project-image" src="https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg">
+		<h1 id="project-title">ROS (Robot Operating System) Course Project</h1>
+		<h2 id="project-date">2017-10-01 00:00:00 -0500</h2>
+
+		<h2 id="project-description">Project description</h2>
+
+<h1 id="homework-3-gazebo-and-ros-control">Homework 3: Gazebo and ROS Control</h1>
+<h2 id="me-495-embedded-systems-in-robotics">ME 495: Embedded Systems in Robotics</h2>
+<h2 id="author-weilin-ma">Author: Weilin Ma</h2>
+
+<h2 id="introduction">Introduction</h2>
+<h3 id="part-1-rrbot-and-ros-interfacing">Part 1: <code class="highlighter-rouge">rrbot</code> and ROS interfacing</h3>
+<h4 id="21-customized-world">2.1 Customized World</h4>
+<p>I have created a custom <em><a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/worlds/MySpace.world">world</a></em> with a beer can, a postbox, and a cabinet. I chose them because their geometry shape is easier to identify.</p>
+<h4 id="22-launch-file">2.2: Launch File</h4>
+<p>The launch file is created <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/CustomWorld.launch">here</a>. 
+The default <em>rrbot</em> is added to the launch file. The result is shown in the Gazebo GUI below:
+<img src="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/screenshots/world.png" alt="customWorld" /></p>
+
+<h4 id="23-image-viewer">2.3: Image Viewer</h4>
+<p>a): The command to start image viewer is simply:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rqt_image_view
+</code></pre></div></div>
+<p>b): The plugin to simulate camera is: <strong>“camera_controller”</strong>. I found this in the <em>rrbot.gazebo</em> and the Gazebo Plugin Tutorial.
+c): The topic been published on is: <strong>image_raw</strong>. This is defined in the <em>rrbot.gazebo</em>.</p>
+
+<h4 id="24-rviz-visualization">2.4: Rviz visualization</h4>
+<p>The launch file is created <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/laser_rviz.launch">here</a>
+The initial noise setting makes the rviz look like this:
+<img src="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/screenshots/init_noise.png" alt="init_noise" />
+When I changed the <em>stddev</em>  from 0.01 to 0.08, the rviz looks like this:
+<img src="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/screenshots/std_noise.png" alt="std_noise" />
+I found out that increasing the <strong>standard deviation</strong> will make the “laser collison” interface larger, and increasing the <strong>mean</strong> will curve the interface more. 
+I changed the *<noise>* tag under the **hokuyo_link** tag in the *rrbot.gazebo* file. 
+I also deleted two *"gpu"* in the *robot.gazebo* file in order to make sure the laser pointer showing up in rviz.</noise></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nt">&lt;noise&gt;</span>
+          <span class="nt">&lt;type&gt;</span>gaussian<span class="nt">&lt;/type&gt;</span>
+          <span class="c">&lt;!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range &lt; 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. --&gt;</span>
+          <span class="nt">&lt;mean&gt;</span>0.0<span class="nt">&lt;/mean&gt;</span>
+          <span class="nt">&lt;stddev&gt;</span>0.08<span class="nt">&lt;/stddev&gt;</span>
+        <span class="nt">&lt;/noise&gt;</span>
+</code></pre></div></div>
+<h3 id="part-2-ros-control-ros-communication-and-custom-plugins">Part 2: ROS control, ROS communication, and custom plugins</h3>
+<h4 id="31-configuration">3.1: Configuration</h4>
+<p>The config YAML file is created <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/config/rrbot_control.yaml">here</a>.
+The launch file is being created and combined with the rviz <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/laser_rviz.launch">launch file</a> in the previous section.
+I combined all the other launch files except the <em>CustomWorld.launch</em> together into one single launch file.</p>
+<h4 id="32-apply-torque">3.2: Apply Torque</h4>
+<p>The service node to apply a torque is generated <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/src/joint_torque.py">here</a>.
+I applied an <strong>“effort”</strong> of <em>20</em> to <strong>“joint1”</strong>, for 2 seconds. 
+To see the simulation in Gazebo,</p>
+<ul>
+  <li>first <strong>roslaunch</strong> the customized <em>world</em>, <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/worlds/MySpace.world">CustomWorld.launch</a>;</li>
+  <li>then <strong>rosrun</strong> <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/src/joint_torque.py">joint_torque.py</a>.</li>
+</ul>
+
+<h4 id="33">3.3:</h4>
+<p>a. The custom message that the plugin subscribe to is <strong>“RRBotConfig.msg”</strong> under the <em>.msg</em> folder in the package. 
+b. The world <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/CustomWorld.launch">launch</a> file itself doesn’t change.
+c. The add in a <em>“gazebo” plugin</em> tag that specifies to load the custom plugin.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- ros_control plugin --&gt;</span>
+  <span class="nt">&lt;gazebo&gt;</span>
+    <span class="nt">&lt;plugin</span> <span class="na">name=</span><span class="s">"rrbot_custom"</span> <span class="na">filename=</span><span class="s">"librrbot_custom.so"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;robotNamespace&gt;</span>/rrbot<span class="nt">&lt;/robotNamespace&gt;</span>
+      <span class="nt">&lt;robotSimType&gt;</span>gazebo_ros_control/DefaultRobotHWSim<span class="nt">&lt;/robotSimType&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+  <span class="nt">&lt;/gazebo&gt;</span>
+</code></pre></div></div>
+<p>I found this plugin name in the CMakelist.txt:</p>
+<pre><code class="language-txt">add_library(rrbot_custom src/rrbot_custom_plugin.cpp)
+target_link_libraries(rrbot_custom ${Boost_LIBRARIES} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_dependencies(rrbot_custom ${PROJECT_NAME}_generate_messages_cpp)
+</code></pre>
+
+<h4 id="34">3.4:</h4>
+<p>The <em><a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/CustomWorld.launch">CustomWorld.launch</a></em> file has been updated with adding the command to start the <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/src/cyclic.py">node</a> that publishes a cyclic motion.</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Start the node that sends commands to make the RRBot move in a cyclic mode --&gt;</span>
+<span class="nt">&lt;node</span> <span class="na">name=</span><span class="s">"RRBotConfig"</span> <span class="na">pkg=</span><span class="s">"rrbot_control_me495"</span> <span class="na">type=</span><span class="s">"cyclic.py"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+<p><img src="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/screenshots/cyclic.png" alt="cyclic" />
+To launch the process, simply roslaunch the wolrd launch file <a href="https://github.com/ME495-EmbeddedSystems/homework-3-f2017-KansoW/blob/starter/launch/CustomWorld.launch">CustomWorld.launch</a>.</p>
+
+<h2 id="reference">Reference:</h2>
+<ul>
+  <li><a href="http://gazebosim.org/tutorials/?tut=ros_urdf#HeaderofaURDFFile">Tutorial: Using a URDF in Gazebo</a></li>
+  <li><a href="http://gazebosim.org/tutorials?tut=ros_roslaunch">Tutorial: Using roslaunch to start Gazebo, world files and URDF models</a></li>
+  <li><a href="http://gazebosim.org/tutorials?tut=ros_gzplugins">Tutorial: Using Gazebo plugins with ROS</a></li>
+  <li><a href="http://wiki.ros.org/ROS/Tutorials/WritingServiceClient%28python%29">ROSwiki: Writing a Simple Service and Client (Python)</a></li>
+  <li><a href="http://wiki.ros.org/gazebo_ros_pkgs">ROSwiki: gazebo_ros_pkgs</a></li>
+</ul>
+
+
+	</section>
+
+</main>
+
+      <footer>
+    <ul>
+    	<li>weilinma2018@u.northwestern.edu</li>
+    	<li>1510 Dempster St., Evanston, IL, 60202</li>
+    	<li>(814)777-5009</li>
+    </ul>
+</footer>
+
+
+
+    </div>
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 layout: project
 title: ROS (Robot Operating System) Course Project
 date: December 9, 2017
-image: https://raw.githubusercontent.com/KansoW/KansoW.github.io/master/public/images/former_front.jpg
+image: https://camo.githubusercontent.com/086bf4df048ac644a99f4f20bd9a43c0e147b706/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f617375506e464b664e6f672f302e6a7067
 ---
 
 ## Project description
