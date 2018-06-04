@@ -35,53 +35,56 @@
 		<h2 id="project-description">Project description</h2>
 
 <h1 id="two-wheel-self_balance-robot-with-arduino"><strong>Two-wheel Self_balance Robot with Arduino</strong></h1>
+<p># 
+<strong>__</strong></p>
 <h3 id="general-idea"><strong>General Idea</strong></h3>
 <h5 id="this-is-a-project-that-combines-classical-ideas-from-other-projects">This is a project that combines classical ideas from other projects.</h5>
 <ol>
   <li>The inverse pendulum problem that is often seen in the dynamics and control peojects or courses.</li>
   <li>The Arduino car driving project that is often used as a startup proejcts for learning Arduino.</li>
-  <li>The IMU (<em>Inertial Measurement Unit</em>) that is widely used for balancing projects.
-    <h5 id="this-project-itself-is-fairly-straight-forward-there-are-many-research-papers-and-technical-blog-found-online-that-tackled-this-problem-successfully-i-am-humble-and-glad-that-i-could-get-some-help-from-these-resources">This project itself is fairly straight forward. There are many research papers and technical blog found online that tackled this problem successfully. I am humble and glad that I could get some help from these resources.</h5>
-  </li>
-</ol>
-
-<h3 id="materials">Materials</h3>
-<h4 id="electrical">Electrical</h4>
-<h5 id="1-arduino-uno-v3">1. Arduino UNO V3</h5>
-<h5><img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" width="400" height="350" /></h5>
-<h5 id="2-df-robot-l298n-motor-driver">2. DF Robot L298N Motor Driver</h5>
-<h5 id="-1"><img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" width="400" height="350" /></h5>
-<h5 id="3-pololu-2041-metal-gearmotor-25dx50l-mm-lp-12v-with-48-cpr-encoder">3. Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder</h5>
-<h5 id="-2"><img src="https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c" width="400" height="350" /></h5>
-<h5 id="4-mpu6050-6-axis-imu-accelerometer--gyro">4. MPU6050 6-axis IMU (accelerometer + gyro)</h5>
-<h5 id="-3"><img src="https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg" width="400" height="350" /></h5>
-<h5 id="5-12v-1600-mah-nimh-battery">5. 12V 1600 mAh NiMh Battery</h5>
-<h5 id="6-mini-breadborad">6. Mini breadborad</h5>
-<h5 id="7-jumper-wires">7. Jumper wires</h5>
-<h5 id="8-power-cable-toggle-switch">8. Power cable toggle switch</h5>
-<h4 id="mechanical">Mechanical</h4>
-<ol>
-  <li>Pololu Acrylic Chassis Borads
-<img src="https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27" width="400" height="350" /></li>
-  <li>DF Robot Metal Alluminum Standoffs
-<img src="http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg" width="400" height="350" /></li>
-  <li>Pololu 80mm dia Wheels
-<img src="https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0" width="400" height="350" /></li>
-  <li>Pololu 25mm Metal Gear Brackets</li>
-  <li>Polou 4mm Motor Shaft Adapters</li>
-</ol>
-
-<h3 id="balancing-control-theory">Balancing Control Theory</h3>
-<h4 id="pid">PID:</h4>
-<h5 id="pid-control-is-the-most-common-and-eaisest-method-to-control-the-motion-of-the-inverse-penculum-or-the-self-balance-questions">PID control is the most common and eaisest method to control the motion of the <strong><em>Inverse Penculum</em></strong> or the <strong><em>Self-balance</em></strong> questions.</h5>
-<h5 id="i-used-the-leaing-angle-as-the-controllable-variable-and-the-linear-pushing-or-pulling-force-as-the-input-the-imu-will-sense-gyro-reading-in-the-x-direction-and-acceleromter-reading-in-the-y-and-z-direction-of-which-the-code-snip-is-shown-below">I used the <strong>leaing angle</strong> as the controllable variable and <strong>the linear pushing or pulling force</strong> as the input. The IMU will sense gyro reading in the <strong>x direction</strong> and acceleromter reading in the <strong>y and z direction</strong>, of which the code snip is shown below:</h5>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// read acceleration and gyroscope values</span>
+  <li>The IMU (<em>Inertial Measurement Unit</em>) and I2C communication that is widely used for balancing projects.
+    <h5 id="this-project-does-a-simple-mission-balancing-by-itself-on-two-wheels">This project does a simple mission: <strong>Balancing by itself on two wheels</strong>.</h5>
+    <h5 id="the-idea-is-that-this-robot-will-use-imu-sensor-to-detect-leaning-angel-and-hall-effect-sensor-to-detect-linear-movement-then-the-data-will-be-used-by-the-microcontroller-arduino-uno-to-put-in-a-lqr-linear-quadratic-regulation-controller-to-find-the-proper-motor-pwm-then-the-motor-driver-unit-will-apply-pwm-to-drive-the-motors-accordingly-the-whole-sensing-and-responding-system-will-run-at-400-hz">The idea is that this robot will use <strong>IMU sensor</strong> to detect leaning angel and <strong>hall-effect sensor</strong> to detect linear movement. Then the data will be used by the <strong>microcontroller (Arduino Uno)</strong> to put in a <strong>LQR (linear-quadratic regulation)</strong> controller to find the proper motor PWM. Then the motor driver unit will apply PWM to drive the motors accordingly. The whole sensing and responding system will run at <strong>400 Hz</strong>.</h5>
+    <h2>#</h2>
+    <hr />
+    <h3 id="materials"><strong>Materials</strong></h3>
+    <h4 id="electrical"><strong>Electrical</strong></h4>
+    <h5 id="1-arduino-uno-v3">1. Arduino UNO V3</h5>
+    <h5 id="-1"><img src="https://store-cdn.arduino.cc/usa/catalog/product/cache/1/image/520x330/604a3538c15e081937dbfbd20aa60aad/a/0/a000066_featured.jpg" width="400" height="350" /></h5>
+    <h5 id="2-df-robot-l298n-motor-driver">2. DF Robot L298N Motor Driver</h5>
+    <h5 id="-2"><img src="https://www.dfrobot.com/wiki/images/thumb/c/c5/IGP59861_new.jpg/600px-IGP59861_new.jpg" width="400" height="350" /></h5>
+    <h5 id="3-pololu-2041-metal-gearmotor-25dx50l-mm-lp-12v-with-48-cpr-encoder">3. Pololu 20.4:1 Metal Gearmotor 25Dx50L mm LP 12V with 48 CPR Encoder</h5>
+    <h5 id="-3"><img src="https://a.pololu-files.com/picture/0J3799.600x480.jpg?03a71976857bd4e6d447a7cd8817f31c" width="400" height="350" /></h5>
+    <h5 id="4-mpu6050-6-axis-imu-accelerometer--gyro">4. MPU6050 6-axis IMU (accelerometer + gyro)</h5>
+    <h5 id="-4"><img src="https://www.makerlab-electronics.com/my_uploads/2015/05/mpu-6050-1.jpg" width="400" height="350" /></h5>
+    <h5 id="5-12v-1600-mah-nimh-battery">5. 12V 1600 mAh NiMh Battery</h5>
+    <h5 id="6-mini-breadborad">6. Mini breadborad</h5>
+    <h5 id="7-jumper-wires">7. Jumper wires</h5>
+    <h5 id="8-power-cable-toggle-switch">8. Power cable toggle switch</h5>
+    <h4 id="-5">#</h4>
+    <hr />
+    <h4 id="mechanical"><strong>Mechanical</strong></h4>
+    <h5 id="1-pololu-acrylic-chassis-borads">1. Pololu Acrylic Chassis Borads</h5>
+    <h5 id="-6"><img src="https://a.pololu-files.com/picture/0J1573.600x480.jpg?83308509dcd3b4cfda6e51d1ab730d27" width="400" height="350" /></h5>
+    <h5 id="2-df-robot-metal-alluminum-standoffs">2. DF Robot Metal Alluminum Standoffs</h5>
+    <h5 id="-7"><img src="http://image.dfrobot.com/image/cache/data/FIT0064/IMG_1595-450x300.jpg" width="400" height="350" /></h5>
+    <h5 id="3-pololu-80mm-dia-wheels">3. Pololu 80mm dia Wheels</h5>
+    <h5 id="-8"><img src="https://a.pololu-files.com/picture/0J2583.600x480.jpg?074bb6080dfb9b4b2349997803f1aae0" width="400" height="350" /></h5>
+    <h5 id="4-pololu-25mm-metal-gear-brackets">4. Pololu 25mm Metal Gear Brackets</h5>
+    <h5 id="5-polou-4mm-motor-shaft-adapters">5. Polou 4mm Motor Shaft Adapters</h5>
+    <h4 id="-9">#</h4>
+    <hr />
+    <h3 id="balancing-control-theory">Balancing Control Theory</h3>
+    <h4 id="pid">PID:</h4>
+    <h5 id="pid-control-is-the-most-common-and-eaisest-method-to-control-the-motion-of-the-inverse-penculum-or-the-self-balance-questions">PID control is the most common and eaisest method to control the motion of the <strong><em>Inverse Penculum</em></strong> or the <strong><em>Self-balance</em></strong> questions.</h5>
+    <h5 id="i-used-the-leaing-angle-as-the-controllable-variable-and-the-linear-pushing-or-pulling-force-as-the-input-the-imu-will-sense-gyro-reading-in-the-x-direction-and-acceleromter-reading-in-the-y-and-z-direction-of-which-the-code-snip-is-shown-below">I used the <strong>leaing angle</strong> as the controllable variable and <strong>the linear pushing or pulling force</strong> as the input. The IMU will sense gyro reading in the <strong>x direction</strong> and acceleromter reading in the <strong>y and z direction</strong>, of which the code snip is shown below:</h5>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// read acceleration and gyroscope values</span>
   <span class="n">accY</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationY</span><span class="p">();</span>
   <span class="n">accZ</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getAccelerationZ</span><span class="p">();</span>  
   <span class="n">gyroX</span> <span class="o">=</span> <span class="n">mpu</span><span class="p">.</span><span class="n">getRotationX</span><span class="p">();</span>
-</code></pre></div></div>
-<h5 id="below-is-the-leaning-angle-calculatoin-and-pid-algorithm">Below is the leaning angle calculatoin and PID algorithm:</h5>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// calculate the angle of inclination</span>
+</code></pre></div>    </div>
+    <h5 id="below-is-the-calculatoin-of-leaning-angel-and-pid-algorithm-for-motor-pwm">Below is the calculatoin of leaning angel and PID algorithm for motor PWM:</h5>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// calculate the angle of inclination</span>
   <span class="n">accAngle</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">accY</span><span class="p">,</span> <span class="n">accZ</span><span class="p">)</span><span class="o">*</span><span class="n">RAD_TO_DEG</span><span class="p">;</span>
   <span class="n">gyroRate</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">gyroX</span><span class="p">,</span> <span class="o">-</span><span class="mi">32768</span><span class="p">,</span> <span class="mi">32767</span><span class="p">,</span> <span class="o">-</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
   <span class="n">gyroAngle</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">gyroRate</span><span class="o">*</span><span class="n">incTime</span><span class="p">;</span>  
@@ -89,21 +92,92 @@
   <span class="n">currAngle</span> <span class="o">=</span> <span class="mf">0.999</span><span class="o">*</span><span class="p">(</span><span class="n">prevAngle</span> <span class="o">+</span> <span class="n">gyroAngle</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.001</span><span class="o">*</span><span class="p">(</span><span class="n">accAngle</span><span class="p">);</span>
   <span class="c1">// claculate angle error </span>
   <span class="n">err</span> <span class="o">=</span> <span class="n">currAngle</span> <span class="o">-</span> <span class="n">targetAngle</span><span class="p">;</span>
-  <span class="c1">//errSum += err;  </span>
-  <span class="c1">//errSum = constrain(errSum, -600, 600);</span>
+  <span class="n">errSum</span> <span class="o">+=</span> <span class="n">err</span><span class="p">;</span>  
+  <span class="n">errSum</span> <span class="o">=</span> <span class="n">constrain</span><span class="p">(</span><span class="n">errSum</span><span class="p">,</span> <span class="o">-</span><span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">);</span>
   <span class="c1">// calculate PWM output with PID </span>
-  <span class="c1">//motorPWM = Kp*err + Ki*errSum*incTime + Kd*(currAngle-prevAngle)/incTime;</span>
+  <span class="n">motorPWM</span> <span class="o">=</span> <span class="n">Kp</span><span class="o">*</span><span class="n">err</span> <span class="o">+</span> <span class="n">Ki</span><span class="o">*</span><span class="n">errSum</span><span class="o">*</span><span class="n">incTime</span> <span class="o">+</span> <span class="n">Kd</span><span class="o">*</span><span class="p">(</span><span class="n">currAngle</span><span class="o">-</span><span class="n">prevAngle</span><span class="p">)</span><span class="o">/</span><span class="n">incTime</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <h4 id="-10">#</h4>
+    <hr />
+    <h4 id="lqr">LQR</h4>
+  </li>
+</ol>
+
+<h6 id="i-used-wolfram-mathematica-to-build-the-model-of-this-project-because-i-have-done-the-simulation-of-the-inverse-pendulum-problem-before-its-easier-for-me-to-build-up-from-there-i-also-calculated-the-lqr-control-gains-leaning-angel-leaning-angel-changing-rate-linear-movement-linear-speed-in-mathematica">I used <strong>Wolfram Mathematica</strong> to build the model of this project. Because I have done the simulation of the <strong>Inverse Pendulum</strong> problem before, it’s easier for me to build up from there. I also calculated the <strong>LQR control gains (leaning angel, leaning angel changing rate, linear movement, linear speed)</strong> in Mathematica.</h6>
+<h6 id="then-i-set-the-gains-in-my-arduino-code-as-defined-global-variables-so-that-the-motorpwm-will-be-calculated-accordingly">Then I set the gains in my Arduino code as defined global variables so that the motorPWM will be calculated accordingly.</h6>
+<h6 id="here-i-have-a-snippet-of-the-lqr-calculation-in-my-code">Here I have a snippet of the LQR calculation in my code:</h6>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">encode</span><span class="o">/</span><span class="n">CPR</span><span class="p">)</span><span class="o">*</span><span class="mf">0.08</span><span class="o">*</span><span class="mf">3.1415926</span><span class="p">;</span>
+  <span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">prevy</span><span class="p">)</span><span class="o">/</span><span class="n">incTime</span><span class="p">;</span>
+  <span class="n">dtheta</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">currAngle</span><span class="o">-</span><span class="n">prevAngle</span><span class="p">)</span><span class="o">*</span><span class="n">DEG_TO_RAD</span><span class="o">/</span><span class="n">incTime</span><span class="p">;</span>
+  <span class="c1">// calculate PWM output with LQR</span>
+  <span class="n">motorPWM</span> <span class="o">=</span> <span class="n">constrain</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">Ky</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">Kdy</span><span class="o">*</span><span class="n">dy</span> <span class="o">-</span> <span class="n">Kth</span><span class="o">*</span><span class="n">err</span><span class="o">*</span><span class="n">DEG_TO_RAD</span> <span class="o">-</span> <span class="n">Kdth</span><span class="o">*</span><span class="n">dtheta</span><span class="p">),</span> <span class="o">-</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
 </code></pre></div></div>
+<h6 id="and-here-below-is-where-i-set-the-control-gains-at-the-front-of-the-code">And here below is where I set the control gains at the front of the code:</h6>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LQR gains</span>
+<span class="cp">#define Ky 2236
+#define Kdy 967
+#define Kth -2051
+#define Kdth -166
+</span></code></pre></div></div>
+<h4 id="-11">#</h4>
+<hr />
+<h4 id="turning">Turning</h4>
+<h6 id="later-on-i-added-turning-algorithms-so-i-can-make-it-turn-left-or-right-with-bluetooth-control">Later on I added turning algorithms so I can make it turn left or right with bluetooth control:</h6>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">switch</span> <span class="p">(</span><span class="n">turnStat</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span> <span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">motorPWM</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">motorPWM</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">200</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">50</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="o">-</span><span class="mi">1</span> <span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">motorPWM</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="o">-</span><span class="mi">150</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">200</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">motorPWM</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">50</span> <span class="o">&amp;&amp;</span> <span class="n">motorPWM</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">pitchDif</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="p">:</span>
+      <span class="n">pitchDif</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">//motorPWM = 10*(-Kth*err*DEG_TO_RAD - Kdth*gyroAngle);</span>
+  <span class="c1">// constrain motor output range</span>
+  <span class="n">leftmotorPWM</span> <span class="o">=</span> <span class="n">constrain</span><span class="p">(</span><span class="n">motorPWM</span><span class="o">+</span><span class="n">pitchDif</span><span class="p">,</span> <span class="o">-</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+  <span class="n">rightmotorPWM</span> <span class="o">=</span> <span class="n">constrain</span><span class="p">(</span><span class="n">motorPWM</span><span class="o">-</span><span class="n">pitchDif</span><span class="p">,</span> <span class="o">-</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>
+  <span class="n">prevAngle</span> <span class="o">=</span> <span class="n">currAngle</span><span class="p">;</span>
+  <span class="n">prevy</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+  
+</code></pre></div></div>
+<h4 id="-12">#</h4>
+<hr />
+<h4 id="bluetooth-connection-and-control">Bluetooth Connection and Control</h4>
+<h6 id="i-put-on-a-bluetooth-module-on-the-arduino-in-order-to-communicate-with-my-laptop-and-preferrably-my-cell-phone-the-module-i-used-is-a-bluetooth-hc-05-which-i-bought-from-amazoncom">I put on a bluetooth module on the Arduino in order to communicate with my laptop and preferrably, my cell-phone. The module I used is a <strong>Bluetooth HC-05</strong> which I bought from Amazon.com:</h6>
+<h6 id="-13"><img src="https://www.robomart.com/image/cache/catalog/RM0847/hc-05-bluetooth-module-with-base-bluetooth-modules-rm0847-by-robomart-917-500x500.jpg" width="400" height="350" /></h6>
+<p>####</p>
+<h4 id="videos">Videos:</h4>
+<h5 id="click-the-link-below-to-be-directed-to-the-videos"><strong>Click the link below to be directed to the videos</strong></h5>
+<h6 id="simple-pid_1"><a href="https://youtu.be/JYqBO8-WjIE">Simple PID_1</a></h6>
+<h6 id="simple-pid_2"><a href="https://youtu.be/JYqBO8-WjIE">Simple PID_2</a></h6>
 
-<h4 id="lqr">LQR</h4>
-
-<h3 id="progress">Progress</h3>
-<h6 id="as-of-right-now-i-got-the-robot-balancing-with-simple-pid-control-here-are-some-videos-showing-the-results">As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:</h6>
-<h5 id="click-the-images-below-to-be-directed-to-the-videos"><strong>Click the images below to be directed to the videos</strong></h5>
-<h6 id="first-video"><a href="https://youtu.be/JYqBO8-WjIE">First video</a></h6>
-<h6 id="-4"><img src="https://youtu.be/JYqBO8-WjIE" alt="Simple PID_2" /></h6>
-<h6 id="i-will-update-pictures-later">(I will update pictures later…)</h6>
-
+<h2 id="-14">#</h2>
+<h2 id="-15">#</h2>
+<hr />
 <h3 id="refrence-and-sources">Refrence and Sources</h3>
 <h5 id="1-suhardi--et-al-two-wheeled-balancing-robot-controller-designed-using-pid-faculty-of-electrical-and-electronic-engineering-universiti-tun-hussein-onn-malaysia-jan-2015-pp-139">1. SUHARDI , et al. “<a href="https://pdfs.semanticscholar.org/5a5b/3b44c6456ae231162ce013a8e493dc1bc6db.pdf">TWO-WHEELED BALANCING ROBOT CONTROLLER DESIGNED USING PID.</a>” Faculty of Electrical and Electronic Engineering Universiti Tun Hussein Onn Malaysia, Jan. 2015, pp. 1–39.</h5>
 <h5 id="2-stanford-university-ee363-linear-quadratic-regulator-discrete-time-finite-horizon-linear-quadratic-regulator-discrete-time-finite-horizon-jan-2009-pp-132">2. Stanford University EE363. “<a href="https://stanford.edu/class/ee363/lectures/dlqr.pdf">Linear Quadratic Regulator: Discrete-Time Finite Horizon.</a>” Linear Quadratic Regulator: Discrete-Time Finite Horizon, Jan. 2009, pp. 1–32.()</h5>
