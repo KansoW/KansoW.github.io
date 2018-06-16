@@ -1,8 +1,8 @@
 ---
 layout: project
-title: ROS (Robot Operating System) Course Project
+title: Linear Motion Pulling Machine for Whicker Drawing Research
 date: June 15, 2018
-image: https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg
+image: https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true
 ---
 
 ## Project description
