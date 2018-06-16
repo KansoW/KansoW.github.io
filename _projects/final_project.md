@@ -2,7 +2,7 @@
 layout: project
 title: Linear Motion Pulling Machine for Whicker Drawing Research
 date: June 15, 2018
-image: https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true
+image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/Pics/IMG_20180614_215205.jpg
 ---
 
 ## Project description
@@ -30,7 +30,7 @@ image: https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20
 
 ## **Progress:**
 #### As for right now (June 15, 2018), I have built the whole prototype and initial simple Arduino code to drive the pulling mechanism linearly. The stepper motor can drive the lead screw at a constant rotary speed, thus driving the traveling nuts at a relatively low constant linear speed. 
-#### <img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg" width="400" height="350" />
+#### <img src="https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/Pics/IMG_20180614_215205.jpg" width="400" height="350" />
 
 ## **Videos:**
 #### Will update very soon...
