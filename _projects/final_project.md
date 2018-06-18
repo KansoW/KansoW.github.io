@@ -35,38 +35,38 @@ image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/P
 #### For later improvement, I will add functions like _Check Position_, _Check Direction_, _Set Feed Spped_, etc. 
 
 #### <a name="void setup()"></a>
-#### <code>
-#### void setup() {
-####   // Initialize Serial Port
-####   Serial.begin(9600);
+``` 
+void setup() {
+  // Initialize Serial Port
+  Serial.begin(9600);
   
-####   // set up pin mode
-####   pinMode(DIR, OUTPUT);
-####   pinMode(STEP, OUTPUT);
-####   pinMode(ENABLE, OUTPUT);
+  // set up pin mode
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  pinMode(ENABLE, OUTPUT);
   
-####   // set direction and step to low
-####   digitalWrite(DIR, 0);
-####   digitalWrite(STEP, 0);
-####   digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
-#### }
-#### </code>
+  // set direction and step to low
+  digitalWrite(DIR, 0);
+  digitalWrite(STEP, 0);
+  digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
+}
+```
 #### <a name="void loop()"></a>
-#### <code>
-#### void loop() {
-####   Serial.println("Forward");
-####    digitalWrite(DIR, HIGH);
-####   digitalWrite(STEP, 1); // starts moving
-####   delay(1000); // moves for 1 second forward
-####   digitalWrite(STEP, 0); // stops moving
+```
+void loop() {
+  Serial.println("Forward");
+   digitalWrite(DIR, HIGH);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second forward
+  digitalWrite(STEP, 0); // stops moving
   
-####   Serial.println("Backward");
-####   digitalWrite(DIR, LOW);
-####   digitalWrite(STEP, 1); // starts moving
-####   delay(1000); // moves for 1 second backward
-####   digitalWrite(STEP, 0); // stops moving
-#### }
-#### </code>
+  Serial.println("Backward");
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second backward
+  digitalWrite(STEP, 0); // stops moving
+}
+```
 
 
 

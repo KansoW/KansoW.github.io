@@ -62,38 +62,36 @@
 <h4 id="for-later-improvement-i-will-add-functions-like-check-position-check-direction-set-feed-spped-etc">For later improvement, I will add functions like <em>Check Position</em>, <em>Check Direction</em>, <em>Set Feed Spped</em>, etc.</h4>
 
 <h4 id="-5"><a name="void setup()"></a></h4>
-<h4 id="-6"><code></code></h4>
-<h4 id="void-setup-">void setup() {</h4>
-<h4 id="-initialize-serial-port">// Initialize Serial Port</h4>
-<h4 id="serialbegin9600">Serial.begin(9600);</h4>
-
-<h4 id="-set-up-pin-mode">// set up pin mode</h4>
-<h4 id="pinmodedir-output">pinMode(DIR, OUTPUT);</h4>
-<h4 id="pinmodestep-output">pinMode(STEP, OUTPUT);</h4>
-<h4 id="pinmodeenable-output">pinMode(ENABLE, OUTPUT);</h4>
-
-<h4 id="-set-direction-and-step-to-low">// set direction and step to low</h4>
-<h4 id="digitalwritedir-0">digitalWrite(DIR, 0);</h4>
-<h4 id="digitalwritestep-0">digitalWrite(STEP, 0);</h4>
-<h4 id="digitalwriteenable-high--enable-the-mp6500-motor-driver">digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver</h4>
-<h4 id="-7">}</h4>
-<h4 id="code">&lt;/code&gt;</h4>
-<h4 id="-8"><a name="void loop()"></a></h4>
-<h4 id="-9"><code></code></h4>
-<h4 id="void-loop-">void loop() {</h4>
-<h4 id="serialprintlnforward">Serial.println(“Forward”);</h4>
-<h4 id="digitalwritedir-high">digitalWrite(DIR, HIGH);</h4>
-<h4 id="digitalwritestep-1--starts-moving">digitalWrite(STEP, 1); // starts moving</h4>
-<h4 id="delay1000--moves-for-1-second-forward">delay(1000); // moves for 1 second forward</h4>
-<h4 id="digitalwritestep-0--stops-moving">digitalWrite(STEP, 0); // stops moving</h4>
-
-<h4 id="serialprintlnbackward">Serial.println(“Backward”);</h4>
-<h4 id="digitalwritedir-low">digitalWrite(DIR, LOW);</h4>
-<h4 id="digitalwritestep-1--starts-moving-1">digitalWrite(STEP, 1); // starts moving</h4>
-<h4 id="delay1000--moves-for-1-second-backward">delay(1000); // moves for 1 second backward</h4>
-<h4 id="digitalwritestep-0--stops-moving-1">digitalWrite(STEP, 0); // stops moving</h4>
-<h4 id="-10">}</h4>
-<h4 id="code-1">&lt;/code&gt;</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
+  // Initialize Serial Port
+  Serial.begin(9600);
+  
+  // set up pin mode
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  pinMode(ENABLE, OUTPUT);
+  
+  // set direction and step to low
+  digitalWrite(DIR, 0);
+  digitalWrite(STEP, 0);
+  digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
+}
+</code></pre></div></div>
+<h4 id="-6"><a name="void loop()"></a></h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void loop() {
+  Serial.println("Forward");
+   digitalWrite(DIR, HIGH);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second forward
+  digitalWrite(STEP, 0); // stops moving
+  
+  Serial.println("Backward");
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second backward
+  digitalWrite(STEP, 0); // stops moving
+}
+</code></pre></div></div>
 
 <h2 id="videos"><strong>Videos:</strong></h2>
 <h4 id="will-update-very-soon">Will update very soon…</h4>
