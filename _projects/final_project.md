@@ -5,8 +5,6 @@ date: June 15, 2018
 image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/Pics/IMG_20180614_215205.jpg
 ---
 
-## Project description
-
 # **Linear Motion Pulling Machine for Whicker Drawing Research**
 
 #### Weilin Ma, _April ~ December 2018_
@@ -31,6 +29,46 @@ image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/P
 ## **Progress:**
 #### As for right now (June 15, 2018), I have built the whole prototype and initial simple Arduino code to drive the pulling mechanism linearly. The stepper motor can drive the lead screw at a constant rotary speed, thus driving the traveling nuts at a relatively low constant linear speed. 
 #### <img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" />
+
+## **Code and Algorithm:**
+#### The coding for this prototype is fairly simple while using the [**MP6500 Stepper Motor Driver**](https://www.pololu.com/product/2968). It only sets up two pins _(STEP and DIR)_ in function <a href="void setup()">**setup**</a>, and apply analog and digital controls on these two pins in function <a href="void loop()">**loop**</a>.
+#### For later improvement, I will add functions like _Check Position_, _Check Direction_, _Set Feed Spped_, etc. 
+
+#### <a name="void setup()"></a>
+<code>
+void setup() {
+  // Initialize Serial Port
+  Serial.begin(9600);
+  
+  // set up pin mode
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  pinMode(ENABLE, OUTPUT);
+  
+  // set direction and step to low
+  digitalWrite(DIR, 0);
+  digitalWrite(STEP, 0);
+  digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
+}
+</code>
+#### <a name="void loop()"></a>
+<code>
+void loop() {
+  Serial.println("Forward");
+   digitalWrite(DIR, HIGH);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second forward
+  digitalWrite(STEP, 0); // stops moving
+  
+  Serial.println("Backward");
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second backward
+  digitalWrite(STEP, 0); // stops moving
+}
+</code>
+
+
 
 ## **Videos:**
 #### Will update very soon...

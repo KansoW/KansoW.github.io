@@ -32,9 +32,7 @@
 		<h1 id="project-title">Linear Motion Pulling Machine for Whicker Drawing Research</h1>
 		<h2 id="project-date">2018-06-15 00:00:00 -0500</h2>
 
-		<h2 id="project-description">Project description</h2>
-
-<h1 id="linear-motion-pulling-machine-for-whicker-drawing-research"><strong>Linear Motion Pulling Machine for Whicker Drawing Research</strong></h1>
+		<h1 id="linear-motion-pulling-machine-for-whicker-drawing-research"><strong>Linear Motion Pulling Machine for Whicker Drawing Research</strong></h1>
 
 <h4 id="weilin-ma-april--december-2018">Weilin Ma, <em>April ~ December 2018</em></h4>
 <h4 id="master-of-science-in-robotics-northwestern-university">Master of Science in Robotics, Northwestern University</h4>
@@ -58,6 +56,44 @@
 <h2 id="progress"><strong>Progress:</strong></h2>
 <h4 id="as-for-right-now-june-15-2018-i-have-built-the-whole-prototype-and-initial-simple-arduino-code-to-drive-the-pulling-mechanism-linearly-the-stepper-motor-can-drive-the-lead-screw-at-a-constant-rotary-speed-thus-driving-the-traveling-nuts-at-a-relatively-low-constant-linear-speed">As for right now (June 15, 2018), I have built the whole prototype and initial simple Arduino code to drive the pulling mechanism linearly. The stepper motor can drive the lead screw at a constant rotary speed, thus driving the traveling nuts at a relatively low constant linear speed.</h4>
 <h4 id="-4"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" /></h4>
+
+<h2 id="code-and-algorithm"><strong>Code and Algorithm:</strong></h2>
+<h4 id="the-coding-for-this-prototype-is-fairly-simple-while-using-the-mp6500-stepper-motor-driver-it-only-sets-up-two-pins-step-and-dir-in-function-setup-and-apply-analog-and-digital-controls-on-these-two-pins-in-function-loop">The coding for this prototype is fairly simple while using the <a href="https://www.pololu.com/product/2968"><strong>MP6500 Stepper Motor Driver</strong></a>. It only sets up two pins <em>(STEP and DIR)</em> in function <a href="void setup()"><strong>setup</strong></a>, and apply analog and digital controls on these two pins in function <a href="void loop()"><strong>loop</strong></a>.</h4>
+<h4 id="for-later-improvement-i-will-add-functions-like-check-position-check-direction-set-feed-spped-etc">For later improvement, I will add functions like <em>Check Position</em>, <em>Check Direction</em>, <em>Set Feed Spped</em>, etc.</h4>
+
+<h4 id="-5"><a name="void setup()"></a></h4>
+<p><code>
+void setup() {
+  // Initialize Serial Port
+  Serial.begin(9600);</code></p>
+
+<p>// set up pin mode
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  pinMode(ENABLE, OUTPUT);</p>
+
+<p>// set direction and step to low
+  digitalWrite(DIR, 0);
+  digitalWrite(STEP, 0);
+  digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
+}
+&lt;/code&gt;</p>
+<h4 id="-6"><a name="void loop()"></a></h4>
+<p><code>
+void loop() {
+  Serial.println("Forward");
+   digitalWrite(DIR, HIGH);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second forward
+  digitalWrite(STEP, 0); // stops moving</code></p>
+
+<p>Serial.println(“Backward”);
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, 1); // starts moving
+  delay(1000); // moves for 1 second backward
+  digitalWrite(STEP, 0); // stops moving
+}
+&lt;/code&gt;</p>
 
 <h2 id="videos"><strong>Videos:</strong></h2>
 <h4 id="will-update-very-soon">Will update very soon…</h4>
