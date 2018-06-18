@@ -62,37 +62,36 @@
 <h4 id="for-later-improvement-i-will-add-functions-like-check-position-check-direction-set-feed-spped-etc">For later improvement, I will add functions like <em>Check Position</em>, <em>Check Direction</em>, <em>Set Feed Spped</em>, etc.</h4>
 
 <h4 id="-5"><a name="void setup()"></a></h4>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
-  // Initialize Serial Port
-  Serial.begin(9600);
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Initialize Serial Port</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
   
-  // set up pin mode
-  pinMode(DIR, OUTPUT);
-  pinMode(STEP, OUTPUT);
-  pinMode(ENABLE, OUTPUT);
+  <span class="c1">// set up pin mode</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
   
-  // set direction and step to low
-  digitalWrite(DIR, 0);
-  digitalWrite(STEP, 0);
-  digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
-}
+  <span class="c1">// set direction and step to low</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> <span class="c1">// enable the MP6500 motor driver</span>
+<span class="p">}</span>
 </code></pre></div></div>
 <h4 id="-6"><a name="void loop()"></a></h4>
-<p>[code lang=”cpp”]
-void loop() {
-  Serial.println(“Forward”);
-   digitalWrite(DIR, HIGH);
-  digitalWrite(STEP, 1); // starts moving
-  delay(1000); // moves for 1 second forward
-  digitalWrite(STEP, 0); // stops moving</p>
-
-<p>Serial.println(“Backward”);
-  digitalWrite(DIR, LOW);
-  digitalWrite(STEP, 1); // starts moving
-  delay(1000); // moves for 1 second backward
-  digitalWrite(STEP, 0); // stops moving
-}
-[/code]</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Forward"</span><span class="p">);</span>
+   <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// starts moving</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// moves for 1 second forward</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stops moving</span>
+  
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Backward"</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// starts moving</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// moves for 1 second backward</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stops moving</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h2 id="videos"><strong>Videos:</strong></h2>
 <h4 id="will-update-very-soon">Will update very soon…</h4>

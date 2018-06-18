@@ -11,10 +11,7 @@ image_path:         /public/images
 
 # Build settings
 markdown:           kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-highlighter: rouge
+highlighter:        rouge
 permalink:          pretty
 
 # Collection definitions and settings

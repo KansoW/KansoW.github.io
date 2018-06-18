@@ -35,7 +35,7 @@ image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/P
 #### For later improvement, I will add functions like _Check Position_, _Check Direction_, _Set Feed Spped_, etc. 
 
 #### <a name="void setup()"></a>
-``` 
+``` cpp
 void setup() {
   // Initialize Serial Port
   Serial.begin(9600);
@@ -52,7 +52,7 @@ void setup() {
 }
 ```
 #### <a name="void loop()"></a>
-[code lang="cpp"]
+``` cpp
 void loop() {
   Serial.println("Forward");
    digitalWrite(DIR, HIGH);
@@ -66,7 +66,7 @@ void loop() {
   delay(1000); // moves for 1 second backward
   digitalWrite(STEP, 0); // stops moving
 }
-[/code]
+```
 
 
 
