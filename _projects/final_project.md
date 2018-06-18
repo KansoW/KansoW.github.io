@@ -31,10 +31,10 @@ image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/P
 #### <img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" />
 
 ## **Code and Algorithm:**
-#### The coding for this prototype is fairly simple while using the [**MP6500 Stepper Motor Driver**](https://www.pololu.com/product/2968). It only sets up two pins _(STEP and DIR)_ in function <a href="void setup()">**setup**</a>, and apply analog and digital controls on these two pins in function <a href="void loop()">**loop**</a>.
+#### The coding for this prototype is fairly simple while using the [**MP6500 Stepper Motor Driver**](https://www.pololu.com/product/2968). It only sets up two pins _(STEP and DIR)_ in function <a href="#void setup()">**setup**</a>, and apply analog and digital controls on these two pins in function <a href="#void loop()">**loop**</a>.
 #### For later improvement, I will add functions like _Check Position_, _Check Direction_, _Set Feed Spped_, etc. 
 
-#### <a name="void setup()">function setup</a>
+#### <a name="void setup()"></a>
 ``` 
 void setup() {
   // Initialize Serial Port
@@ -51,7 +51,7 @@ void setup() {
   digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
 }
 ```
-#### <a name="void loop()">function setup</a>
+#### <a name="void loop()"></a>
 [code lang="cpp"]
 void loop() {
   Serial.println("Forward");

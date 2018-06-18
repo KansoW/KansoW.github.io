@@ -58,10 +58,10 @@
 <h4 id="-4"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" /></h4>
 
 <h2 id="code-and-algorithm"><strong>Code and Algorithm:</strong></h2>
-<h4 id="the-coding-for-this-prototype-is-fairly-simple-while-using-the-mp6500-stepper-motor-driver-it-only-sets-up-two-pins-step-and-dir-in-function-setup-and-apply-analog-and-digital-controls-on-these-two-pins-in-function-loop">The coding for this prototype is fairly simple while using the <a href="https://www.pololu.com/product/2968"><strong>MP6500 Stepper Motor Driver</strong></a>. It only sets up two pins <em>(STEP and DIR)</em> in function <a href="void setup()"><strong>setup</strong></a>, and apply analog and digital controls on these two pins in function <a href="void loop()"><strong>loop</strong></a>.</h4>
+<h4 id="the-coding-for-this-prototype-is-fairly-simple-while-using-the-mp6500-stepper-motor-driver-it-only-sets-up-two-pins-step-and-dir-in-function-setup-and-apply-analog-and-digital-controls-on-these-two-pins-in-function-loop">The coding for this prototype is fairly simple while using the <a href="https://www.pololu.com/product/2968"><strong>MP6500 Stepper Motor Driver</strong></a>. It only sets up two pins <em>(STEP and DIR)</em> in function <a href="#void setup()"><strong>setup</strong></a>, and apply analog and digital controls on these two pins in function <a href="#void loop()"><strong>loop</strong></a>.</h4>
 <h4 id="for-later-improvement-i-will-add-functions-like-check-position-check-direction-set-feed-spped-etc">For later improvement, I will add functions like <em>Check Position</em>, <em>Check Direction</em>, <em>Set Feed Spped</em>, etc.</h4>
 
-<h4 id="function-setup"><a name="void setup()">function setup</a></h4>
+<h4 id="-5"><a name="void setup()"></a></h4>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void setup() {
   // Initialize Serial Port
   Serial.begin(9600);
@@ -77,7 +77,7 @@
   digitalWrite(ENABLE, HIGH); // enable the MP6500 motor driver
 }
 </code></pre></div></div>
-<h4 id="function-setup-1"><a name="void loop()">function setup</a></h4>
+<h4 id="-6"><a name="void loop()"></a></h4>
 <p>[code lang=”cpp”]
 void loop() {
   Serial.println(“Forward”);
