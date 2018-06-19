@@ -80,16 +80,28 @@
 <h4 id="-6"><a name="void loop()"></a></h4>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Forward"</span><span class="p">);</span>
-   <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// starts moving</span>
-  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// moves for 1 second forward</span>
-  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stops moving</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">fsc</span> <span class="o">&lt;=</span> <span class="n">steps</span><span class="p">){</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// send pause</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// required 2 us pause per coil while on</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stop pause</span>
+    <span class="n">fsc</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
   
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Backward"</span><span class="p">);</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// starts moving</span>
-  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// moves for 1 second backward</span>
-  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stops moving</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">bsc</span> <span class="o">&lt;=</span> <span class="n">steps</span><span class="p">){</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// send pause</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="c1">// required 2 us pause per coil while on</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">STEP</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// stop pause</span>
+    <span class="n">bsc</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+  
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+  <span class="n">fsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">bsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

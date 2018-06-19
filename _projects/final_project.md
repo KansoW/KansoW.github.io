@@ -55,16 +55,28 @@ void setup() {
 ``` cpp
 void loop() {
   Serial.println("Forward");
-   digitalWrite(DIR, HIGH);
-  digitalWrite(STEP, 1); // starts moving
-  delay(1000); // moves for 1 second forward
-  digitalWrite(STEP, 0); // stops moving
+  digitalWrite(DIR, HIGH);
+  while (fsc <= steps){
+    digitalWrite(STEP, 1); // send pause
+    delay(4); // required 2 us pause per coil while on
+    digitalWrite(STEP, 0); // stop pause
+    fsc++;
+  }
+  
+  delay(500);
   
   Serial.println("Backward");
   digitalWrite(DIR, LOW);
-  digitalWrite(STEP, 1); // starts moving
-  delay(1000); // moves for 1 second backward
-  digitalWrite(STEP, 0); // stops moving
+  while (bsc <= steps){
+    digitalWrite(STEP, 1); // send pause
+    delay(4); // required 2 us pause per coil while on
+    digitalWrite(STEP, 0); // stop pause
+    bsc++;
+  }
+  
+  delay(500);
+  fsc = 0;
+  bsc = 0;
 }
 ```
 
