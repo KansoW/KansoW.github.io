@@ -32,7 +32,9 @@
 		<h1 id="project-title">Linear Motion Pulling Machine for Whicker Drawing Research</h1>
 		<h2 id="project-date">2018-06-15 00:00:00 -0500</h2>
 
-		<h1 id="linear-motion-pulling-machine-for-whicker-drawing-research"><strong>Linear Motion Pulling Machine for Whicker Drawing Research</strong></h1>
+		<h2 id="project-description">Project Description</h2>
+
+<h1 id="linear-motion-pulling-machine-for-whicker-drawing-research"><strong>Linear Motion Pulling Machine for Whicker Drawing Research</strong></h1>
 
 <h4 id="weilin-ma-april--december-2018">Weilin Ma, <em>April ~ December 2018</em></h4>
 <h4 id="master-of-science-in-robotics-northwestern-university">Master of Science in Robotics, Northwestern University</h4>
@@ -40,28 +42,29 @@
 <h4 id="this-is-the-personal-project-for-my-final-quarter-at-the-msr-master-of-science-in-robotics-program-northwestern-university">This is the personal project for my final quarter at the <strong>MSR (Master of Science in Robotics) Program, Northwestern University</strong>.</h4>
 <h4 id="the-goal-for-this-project-is-to-build-and-control-a-machine-that-can-pull-a-plastic-filament-through-a-heated-oven-at-a-constant-speed-so-that-the-filament-can-linearly-taper-and-form-into-a-whisker-that-can-be-used-for-later-related-robotics-research">The goal for this project is to build and control a machine that can pull a plastic filament through a <strong>heated oven</strong> at a <strong>constant speed</strong>, so that the filament can linearly taper and form into a <strong>whisker</strong> that can be used for later related robotics research.</h4>
 <h4 id="my-plan-for-the-first-quarter-april--june-2018-is-to-build-a-simple-prototype-version-frist-as-i-am-building-the-prototype-i-will-be-able-to-study-various-aspects-of-the-design-and-try-to-make-adjustments-for-later-versions">My plan for the first quarter (April ~ June 2018) is to build a simple prototype version frist. As I am building the prototype, I will be able to study various aspects of the design and try to make adjustments for later versions.</h4>
-
+<h4><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Video/ezgif.com-video-to-gif.gif?raw=true" width="800" height="450" /></h4>
+<hr />
 <h2 id="design"><strong>Design:</strong></h2>
 <h3 id="mechanical"><strong>Mechanical:</strong></h3>
 <h4 id="the-prototype-is-more-focused-on-mechanical-design-because-of-the-need-to-get-it-working-early">The prototype is more focused on mechanical design because of the need to get it working early.</h4>
 <h4 id="the-mechanical-system-consists-of-a-stepper-motor-with-lead-screw-and-traveling-nuts-and-an-aluminum-slide-bar-with-rotary-sliders-the-two-parts-are-joined-together-by-a-slider-mount-with-a-whisker-gripper-on-top">The mechanical system consists of a stepper motor with lead screw and traveling nuts, and an aluminum slide bar with rotary sliders. The two parts are joined together by a <a href="#Image1: slider mount with gripper"><em>slider mount with a whisker gripper on top</em></a>.</h4>
-<h4><a name="Image1: slider mount with gripper"></a></h4>
-<h4 id="-1"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215216.jpg?raw=true" width="400" height="350" /></h4>
-
+<h4 id="-1"><a name="Image1: slider mount with gripper"></a></h4>
+<h4 id="-2"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215216.jpg?raw=true" width="400" height="350" /></h4>
+<hr />
 <h3 id="electrical"><strong>Electrical:</strong></h3>
 <h4 id="the-electrical-system-is-fairly-simple-it-consists-of-an-arduino-uno-and-a-mp6500-stepper-motor-driver-from-pololu-the-power-supply-for-now-is-a-12v-dc-signal-from-a-table-top-power-supplier">The electrical system is fairly simple. It consists of an <a href="#Image2: Arduino and MP6500"><em>Arduino Uno</em></a> and a <a href="https://www.pololu.com/product/2968"><strong>MP6500 Stepper Motor Driver</strong></a> from Pololu. The power supply for now is a 12V DC signal from a table top power supplier.</h4>
-<h4 id="-2"><a name="Image2: Arduino and MP6500"></a></h4>
-<h4 id="-3"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215226.jpg?raw=true" width="400" height="350" /></h4>
-
+<h4 id="-3"><a name="Image2: Arduino and MP6500"></a></h4>
+<h4 id="-4"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215226.jpg?raw=true" width="400" height="350" /></h4>
+<hr />
 <h2 id="progress"><strong>Progress:</strong></h2>
 <h4 id="as-for-right-now-june-15-2018-i-have-built-the-whole-prototype-and-initial-simple-arduino-code-to-drive-the-pulling-mechanism-linearly-the-stepper-motor-can-drive-the-lead-screw-at-a-constant-rotary-speed-thus-driving-the-traveling-nuts-at-a-relatively-low-constant-linear-speed">As for right now (June 15, 2018), I have built the whole prototype and initial simple Arduino code to drive the pulling mechanism linearly. The stepper motor can drive the lead screw at a constant rotary speed, thus driving the traveling nuts at a relatively low constant linear speed.</h4>
-<h4 id="-4"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" /></h4>
-
+<h4 id="-5"><img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Pics/IMG_20180614_215205.jpg?raw=true" width="400" height="350" /></h4>
+<hr />
 <h2 id="code-and-algorithm"><strong>Code and Algorithm:</strong></h2>
 <h4 id="the-coding-for-this-prototype-is-fairly-simple-while-using-the-mp6500-stepper-motor-driver-it-only-sets-up-two-pins-step-and-dir-in-function-setup-and-apply-analog-and-digital-controls-on-these-two-pins-in-function-loop">The coding for this prototype is fairly simple while using the <a href="https://www.pololu.com/product/2968"><strong>MP6500 Stepper Motor Driver</strong></a>. It only sets up two pins <em>(STEP and DIR)</em> in function <a href="#void setup()"><strong>setup</strong></a>, and apply analog and digital controls on these two pins in function <a href="#void loop()"><strong>loop</strong></a>.</h4>
 <h4 id="for-later-improvement-i-will-add-functions-like-check-position-check-direction-set-feed-spped-etc">For later improvement, I will add functions like <em>Check Position</em>, <em>Check Direction</em>, <em>Set Feed Spped</em>, etc.</h4>
 
-<h4 id="-5"><a name="void setup()"></a></h4>
+<h4 id="-6"><a name="void setup()"></a></h4>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// Initialize Serial Port</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
@@ -77,7 +80,7 @@
   <span class="n">digitalWrite</span><span class="p">(</span><span class="n">ENABLE</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span> <span class="c1">// enable the MP6500 motor driver</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<h4 id="-6"><a name="void loop()"></a></h4>
+<h4 id="-7"><a name="void loop()"></a></h4>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Forward"</span><span class="p">);</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
@@ -88,7 +91,7 @@
     <span class="n">fsc</span><span class="o">++</span><span class="p">;</span>
   <span class="p">}</span>
   
-  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// wait for 0.5 sec to change direction</span>
   
   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Backward"</span><span class="p">);</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="kt">DIR</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
@@ -99,14 +102,14 @@
     <span class="n">bsc</span><span class="o">++</span><span class="p">;</span>
   <span class="p">}</span>
   
-  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
-  <span class="n">fsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="n">bsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span> <span class="c1">// wait for 0.5 sec to change direction</span>
+  <span class="n">fsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// reset forward step count</span>
+  <span class="n">bsc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// reset backward step count</span>
 <span class="p">}</span>
 </code></pre></div></div>
-
+<hr />
 <h2 id="videos"><strong>Videos:</strong></h2>
-<h4 id="will-update-very-soon">Will update very soon…</h4>
+<h4 id="iframe-width800-height450-srchttpsyoutubeeq7j8tpm7wwiframe">&lt;iframe width="800" height="450" src="https://youtu.be/eQ7j8TPM7Ww"&gt;&lt;/iframe&gt;</h4>
 
 
 	</section>
