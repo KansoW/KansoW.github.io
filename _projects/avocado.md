@@ -3,6 +3,7 @@ layout: project
 title: Smart Rotary Actuator for Robotics Research and Applications
 date: June 08, 2018
 image: https://raw.githubusercontent.com/KansoW/RDS_Avocado/master/avocado%20logo.JPG
+---
 
 ## Project Description
 
