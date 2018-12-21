@@ -7,14 +7,14 @@ image: https://raw.githubusercontent.com/KansoW/Whisker_Pulling_Machine/master/P
 
 ## Project Description
 
-# **Linear Motion Pulling Machine for Whicker Drawing Research**
+# **Linear Motion Pulling Machine for Whisker Drawing Research**
 
-#### Weilin Ma, _April ~ December 2018_
+#### Weilin Ma, _April ~ December 2018
 #### Master of Science in Robotics, Northwestern University
 ## **Overview:**
 #### This is the personal project for my final quarter at the **MSR (Master of Science in Robotics) Program, Northwestern University**.
 #### The goal for this project is to build and control a machine that can pull a plastic filament through a **heated oven** at a **constant speed**, so that the filament can linearly taper and form into a **whisker** that can be used for later related robotics research.
-#### My plan for the first quarter (April ~ June 2018) is to build a simple prototype version frist. As I am building the prototype, I will be able to study various aspects of the design and try to make adjustments for later versions.
+#### My plan for the first quarter (April ~ June 2018) is to build a simple prototype version first. As I am building the prototype, I will be able to study various aspects of the design and try to make adjustments for later versions.
 #### <img src="https://github.com/KansoW/Whisker_Pulling_Machine/blob/master/Video/ezgif.com-video-to-gif.gif?raw=true" width="800" height="450" />
 ______
 ## **Design:**
